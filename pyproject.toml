@@ -1,0 +1,23 @@
+[project]
+name = "desafio-tecnico"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "luisbezerrabarradas@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "sqlalchemy (>=2.0.42,<3.0.0)",
+    "sqlmodel (>=0.0.24,<0.0.25)",
+    "fastapi[standard] (>=0.116.1,<0.117.0)",
+    "dotenv (>=0.9.9,<0.10.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
