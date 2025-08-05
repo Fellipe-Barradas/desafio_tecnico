@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from controllers import FormularioController, UsuarioController
+from controllers import FormularioController, UsuarioController, QuestaoController
 from config import create_db_and_tables, drop_db_and_tables
 from fastapi.staticfiles import StaticFiles
 
@@ -26,6 +26,7 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 app.include_router(FormularioController.router, prefix="/api/v1", tags=["formularios"])
 app.include_router(UsuarioController.router, prefix="/api/v1", tags=["usuarios"])
+app.include_router(QuestaoController.router, prefix="/api/v1", tags=["questoes"])
 
 if __name__ == "__main__":
     import uvicorn
