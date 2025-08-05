@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from controllers import FormularioController, UsuarioController, QuestaoController, AlternativaController
+from controllers import FormularioController, UsuarioController, QuestaoController, AlternativaController, RespostaController
 from config import create_db_and_tables, drop_db_and_tables
 from fastapi.staticfiles import StaticFiles
 
@@ -28,6 +28,7 @@ app.include_router(FormularioController.router, prefix="/api/v1", tags=["formula
 app.include_router(UsuarioController.router, prefix="/api/v1", tags=["usuarios"])
 app.include_router(QuestaoController.router, prefix="/api/v1", tags=["questoes"])
 app.include_router(AlternativaController.router, prefix="/api/v1", tags=["alternativas"])
+app.include_router(RespostaController.router, prefix="/api/v1", tags=["respostas"])
 
 if __name__ == "__main__":
     import uvicorn
