@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-sqlite_path = os.getenv('SQLITE_CAMINHO', 'db.sqlite3')
+postgres_usr = os.getenv("POSTGRES_USER")
+postgres_pwd = os.getenv("POSTGRES_PASSWORD")
+postgres_db = os.getenv("POSTGRES_DB")
+postgres_host = os.getenv("POSTGRES_HOST")
 
-database_url = f"sqlite:///{sqlite_path}"
+database_url = f"postgresql+psycopg2://{postgres_usr}:{postgres_pwd}@{postgres_host}/{postgres_db}"
 
 # Criar engine síncronos
 engine = create_engine(database_url, echo=False, pool_size=3, max_overflow=0)
