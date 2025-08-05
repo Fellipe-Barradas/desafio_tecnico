@@ -1,15 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from controllers import FormularioController
+from controllers import FormularioController, UsuarioController
 from config import create_db_and_tables, drop_db_and_tables
 from fastapi.staticfiles import StaticFiles
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    drop_db_and_tables()  # Dropar tabelas se necessário
+    #drop_db_and_tables()  # Dropar tabelas se necessário
     create_db_and_tables()
-    yield
+    yield 
     
     
 app = FastAPI(title="API para gestão de faltas", version="0.0.1", lifespan=lifespan)
@@ -25,6 +25,7 @@ app.add_middleware(
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 app.include_router(FormularioController.router, prefix="/api/v1", tags=["formularios"])
+app.include_router(UsuarioController.router, prefix="/api/v1", tags=["usuarios"])
 
 if __name__ == "__main__":
     import uvicorn

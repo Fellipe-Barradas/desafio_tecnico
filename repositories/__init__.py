@@ -1,1 +1,2 @@
 from .FormularioRepository import FormularioRepository
+from .UsuarioRepository import UsuarioRepository
